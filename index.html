@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dubai Indian School - Math Adventure Test</title>
-  
+
   <!-- Playful, child-friendly font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="styles.css">
-  
+
   <!-- SEO & Accessibility -->
-  <meta name="description" content="A playful, interactive 3-question arithmetic admission test for 6-year-olds entering Dubai Indian School.">
+  <meta name="description"
+    content="A playful, interactive 3-question arithmetic admission test for 6-year-olds entering Dubai Indian School.">
   <meta name="keywords" content="Dubai Indian School, Admission Test, Kid Math, Arithmetic Test">
 </head>
+
 <body>
-  
+
   <!-- Floating background elements for child-friendly aesthetics -->
   <div class="bubble-bg">
     <div class="bubble bubble-1"></div>
@@ -31,11 +34,11 @@
       <div class="logo-container">
         <!-- SVG School Emblem -->
         <svg viewBox="0 0 100 100" class="school-logo" aria-hidden="true">
-          <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="6"/>
-          <path d="M50 15 L80 35 L80 45 L50 25 L20 45 L20 35 Z" fill="currentColor"/>
-          <rect x="25" y="45" width="50" height="35" fill="currentColor" rx="3"/>
-          <rect x="42" y="58" width="16" height="22" fill="#fff" rx="2"/>
-          <polygon points="50,22 55,30 45,30" fill="#fff"/>
+          <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="6" />
+          <path d="M50 15 L80 35 L80 45 L50 25 L20 45 L20 35 Z" fill="currentColor" />
+          <rect x="25" y="45" width="50" height="35" fill="currentColor" rx="3" />
+          <rect x="42" y="58" width="16" height="22" fill="#fff" rx="2" />
+          <polygon points="50,22 55,30 45,30" fill="#fff" />
         </svg>
         <div class="logo-text">
           <h1>Dubai Indian School</h1>
@@ -45,7 +48,7 @@
     </header>
 
     <main class="test-card" id="main-card">
-      
+
       <!-- SCREEN 1: INTRO -->
       <section id="screen-intro" class="screen-view active">
         <div class="illustration-container">
@@ -69,12 +72,21 @@
             <line x1="20" y1="75" x2="160" y2="75" stroke="#37474F" stroke-width="4" />
           </svg>
         </div>
-        
+
         <h2 class="welcome-title">Welcome, Little Explorer! 🌟</h2>
         <p class="welcome-text">
           Are you ready to show us your math superpowers? Answer 3 fun questions to join our school adventure!
         </p>
-        
+
+        <div class="how-to-card" aria-label="How to play">
+          <h3>How to play</h3>
+          <ul>
+            <li>Solve 3 quick maths questions</li>
+            <li>Use the keypad or keyboard</li>
+            <li>Complete all to pass</li>
+          </ul>
+        </div>
+
         <button id="btn-start" class="btn btn-pulse">Start Adventure! 🎉</button>
       </section>
 
@@ -103,7 +115,8 @@
             <span id="operator" class="eq-op">+</span>
             <span id="num-b" class="eq-num">7</span>
             <span class="eq-equals">=</span>
-            <input type="number" id="math-answer-input" class="math-answer-input" placeholder="?" min="0" max="99" autofocus pattern="[0-9]*" inputmode="numeric" aria-label="Enter answer">
+            <input type="number" id="math-answer-input" class="math-answer-input" placeholder="?" min="0" max="99"
+              autofocus pattern="[0-9]*" inputmode="numeric" aria-label="Enter answer">
           </div>
         </div>
 
@@ -132,7 +145,8 @@
         <!-- Celebratory Trophy SVG -->
         <div class="success-trophy">
           <svg viewBox="0 0 100 100" class="trophy-svg" aria-label="Golden Trophy Mascot">
-            <path d="M30 20 H70 V45 C70 56 61 65 50 65 C39 65 30 56 30 45 Z" fill="#FFD54F" stroke="#FFB300" stroke-width="3" />
+            <path d="M30 20 H70 V45 C70 56 61 65 50 65 C39 65 30 56 30 45 Z" fill="#FFD54F" stroke="#FFB300"
+              stroke-width="3" />
             <path d="M50 65 V80 H40 V85 H60 V80 H50 Z" fill="#FFB300" />
             <!-- Handles -->
             <path d="M30 25 H20 V40 H30 Z" fill="none" stroke="#FFB300" stroke-width="4" stroke-linejoin="round" />
@@ -142,7 +156,8 @@
             <circle cx="57" cy="38" r="3" fill="#37474F" />
             <path d="M45 48 Q50 54 55 48" fill="none" stroke="#37474F" stroke-width="3" stroke-linecap="round" />
             <!-- Sparkles -->
-            <path d="M15 15 L20 20 M85 15 L80 20 M10 50 L18 50 M90 50 L82 50" stroke="#FFD54F" stroke-width="3" stroke-linecap="round" />
+            <path d="M15 15 L20 20 M85 15 L80 20 M10 50 L18 50 M90 50 L82 50" stroke="#FFD54F" stroke-width="3"
+              stroke-linecap="round" />
           </svg>
         </div>
 
@@ -162,7 +177,8 @@
         <!-- Encouraging Mascot -->
         <div class="failure-mascot">
           <svg viewBox="0 0 100 100" class="star-svg" aria-label="Smiling Star Mascot">
-            <polygon points="50,5 64,36 98,36 70,57 81,91 50,70 19,91 30,57 2,36 36,36" fill="#FFF59D" stroke="#FBC02D" stroke-width="3" />
+            <polygon points="50,5 64,36 98,36 70,57 81,91 50,70 19,91 30,57 2,36 36,36" fill="#FFF59D" stroke="#FBC02D"
+              stroke-width="3" />
             <!-- Cute face -->
             <circle cx="42" cy="45" r="3" fill="#37474F" />
             <circle cx="58" cy="45" r="3" fill="#37474F" />
@@ -197,4 +213,5 @@
 
   <script src="app.js"></script>
 </body>
+
 </html>
