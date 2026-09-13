@@ -1,0 +1,626 @@
+/* ==========================================
+   DESIGN SYSTEM & VARIABLES
+   ========================================== */
+:root {
+  --primary-font: 'Fredoka', 'Segoe UI', Roboto, sans-serif;
+  
+  /* Bright, kid-friendly palette */
+  --bg-sky-light: #E0F7FA;
+  --bg-sky-dark: #80DEEA;
+  --card-bg: rgba(255, 255, 255, 0.92);
+  
+  --primary-yellow: #FFD54F;
+  --primary-yellow-shadow: #FFB300;
+  
+  --btn-green: #66BB6A;
+  --btn-green-shadow: #388E3C;
+  
+  --btn-orange: #FF7043;
+  --btn-orange-shadow: #E64A19;
+  
+  /* Option Balloon Colors */
+  --color-red: #EF5350;
+  --color-red-shadow: #C62828;
+  --color-blue: #42A5F5;
+  --color-blue-shadow: #1565C0;
+  --color-green: #26A69A;
+  --color-green-shadow: #00695C;
+  --color-purple: #AB47BC;
+  --color-purple-shadow: #6A1B9A;
+  
+  /* Neutral colors */
+  --text-dark: #37474F;
+  --text-light: #78909C;
+  --border-light: #E0E0E0;
+}
+
+/* ==========================================
+   GLOBAL STYLES & RESET
+   ========================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--primary-font);
+  background: linear-gradient(135deg, var(--bg-sky-light) 0%, var(--bg-sky-dark) 100%);
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  padding: 20px;
+  position: relative;
+}
+
+/* Floating background bubbles */
+.bubble-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bubble {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  animation: floatUp 15s infinite ease-in-out;
+}
+
+.bubble-1 { width: 80px; height: 80px; left: 10%; bottom: -100px; animation-duration: 14s; }
+.bubble-2 { width: 120px; height: 120px; left: 80%; bottom: -120px; animation-delay: 2s; animation-duration: 18s; }
+.bubble-3 { width: 60px; height: 60px; left: 50%; bottom: -80px; animation-delay: 5s; animation-duration: 12s; }
+.bubble-4 { width: 100px; height: 100px; left: 25%; bottom: -150px; animation-delay: 8s; animation-duration: 16s; }
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.2) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ==========================================
+   LAYOUT CONTAINERS
+   ========================================== */
+.app-container {
+  width: 100%;
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.app-header {
+  text-align: center;
+  animation: slideDown 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 10px 24px;
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(0, 131, 143, 0.15);
+  border: 4px solid #FFF;
+}
+
+.school-logo {
+  width: 50px;
+  height: 50px;
+  color: #00ACC1;
+}
+
+.logo-text h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #00838F;
+  line-height: 1.2;
+}
+
+.logo-text p {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+/* ==========================================
+   THE PLAY CARD
+   ========================================== */
+.test-card {
+  background: var(--card-bg);
+  border: 8px solid #FFF;
+  border-radius: 36px;
+  box-shadow: 0 16px 40px rgba(0, 131, 143, 0.2);
+  padding: 40px 30px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.test-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Transitions between screens */
+.screen-view {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  width: 100%;
+}
+
+.screen-view.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================
+   SCREEN 1: WELCOME SCREEN
+   ========================================== */
+.illustration-container {
+  margin-bottom: 25px;
+}
+
+.animated-bus {
+  width: 170px;
+  animation: busWobble 3s infinite ease-in-out;
+}
+
+@keyframes busWobble {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-5px) rotate(-2deg); }
+  75% { transform: translateY(-3px) rotate(2deg); }
+}
+
+.welcome-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #00838F;
+  margin-bottom: 15px;
+}
+
+.welcome-text {
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--text-dark);
+  margin-bottom: 30px;
+  max-width: 90%;
+}
+
+/* ==========================================
+   SCREEN 2: MATH TEST SCREEN
+   ========================================== */
+.progress-section {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.progress-text-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.badge {
+  background: #FFF;
+  border: 3px solid #00ACC1;
+  color: #00838F;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.score-helper {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #00ACC1;
+}
+
+.progress-bar-container {
+  background: #E0F2F1;
+  height: 24px;
+  border-radius: 12px;
+  position: relative;
+  border: 3px solid #FFF;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+  overflow: visible; /* Let bus float nicely above */
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, #26A69A, #80CBC4);
+  height: 100%;
+  width: 0%;
+  border-radius: 8px;
+  transition: width 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+
+.progress-bus {
+  position: absolute;
+  top: -8px;
+  left: 0%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  transition: left 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
+}
+
+.question-instruction {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 12px;
+}
+
+/* Equation Display Card */
+.equation-container {
+  background: #FFF;
+  border: 4px solid #B2DFDB;
+  border-radius: 24px;
+  padding: 20px;
+  width: 100%;
+  max-width: 380px;
+  margin-bottom: 30px;
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.03), 0 8px 20px rgba(0,0,0,0.04);
+}
+
+.equation-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #00796B;
+}
+
+.eq-num, .eq-op, .eq-equals {
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.05);
+}
+
+.math-answer-input {
+  width: 100px;
+  height: 80px;
+  border: 4px dashed #009688;
+  border-radius: 20px;
+  background: #F5FAF9;
+  font-family: var(--primary-font);
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #00695C;
+  text-align: center;
+  outline: none;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.05);
+  transition: all 0.2s ease;
+  caret-color: #009688;
+}
+
+.math-answer-input:focus {
+  border-style: solid;
+  border-color: #26A69A;
+  background: #E0F2F1;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.05), 0 0 10px rgba(38, 166, 154, 0.2);
+}
+
+/* Hide spin arrows in number inputs */
+.math-answer-input::-webkit-outer-spin-button,
+.math-answer-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.math-answer-input {
+  -moz-appearance: textfield;
+}
+
+/* Custom Bubbly Keypad */
+.keypad-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 25px;
+}
+
+.keypad-btn {
+  border: none;
+  border-radius: 18px;
+  padding: 15px;
+  font-family: var(--primary-font);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #FFF;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.1s ease;
+  position: relative;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.15);
+}
+
+/* Toy clicky button states */
+.btn-color-1 {
+  background: var(--color-red);
+  box-shadow: 0 6px 0 var(--color-red-shadow);
+}
+.btn-color-1:hover { transform: translateY(-2px); }
+.btn-color-1:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 var(--color-red-shadow);
+}
+
+.btn-color-2 {
+  background: var(--color-blue);
+  box-shadow: 0 6px 0 var(--color-blue-shadow);
+}
+.btn-color-2:hover { transform: translateY(-2px); }
+.btn-color-2:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 var(--color-blue-shadow);
+}
+
+.btn-color-3 {
+  background: var(--color-green);
+  box-shadow: 0 6px 0 var(--color-green-shadow);
+}
+.btn-color-3:hover { transform: translateY(-2px); }
+.btn-color-3:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 var(--color-green-shadow);
+}
+
+.btn-color-4 {
+  background: var(--color-purple);
+  box-shadow: 0 6px 0 var(--color-purple-shadow);
+}
+.btn-color-4:hover { transform: translateY(-2px); }
+.btn-color-4:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 var(--color-purple-shadow);
+}
+
+.btn-color-action {
+  background: #90A4AE;
+  box-shadow: 0 6px 0 #546E7A;
+}
+.btn-color-action:hover { transform: translateY(-2px); }
+.btn-color-action:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #546E7A;
+}
+
+/* ==========================================
+   BUTTONS SYSTEM
+   ========================================== */
+.btn {
+  border: none;
+  border-radius: 25px;
+  padding: 16px 45px;
+  font-family: var(--primary-font);
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+/* Start / Success Buttons */
+.btn-pulse {
+  background: var(--primary-yellow);
+  color: #5D4037;
+  box-shadow: 0 8px 0 var(--primary-yellow-shadow), 0 12px 24px rgba(255, 179, 0, 0.3);
+  animation: heartbeat 2s infinite ease-in-out;
+}
+
+.btn-pulse:active {
+  transform: translateY(6px);
+  box-shadow: 0 2px 0 var(--primary-yellow-shadow);
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Submit Action Button */
+#btn-submit {
+  background: var(--btn-green);
+  color: #FFF;
+  box-shadow: 0 8px 0 var(--btn-green-shadow);
+  width: 100%;
+  max-width: 320px;
+  margin-top: 10px;
+}
+
+#btn-submit:active:not(:disabled) {
+  transform: translateY(6px);
+  box-shadow: 0 2px 0 var(--btn-green-shadow);
+}
+
+.btn-disabled, .btn:disabled {
+  background: #CFD8DC !important;
+  color: #90A4AE !important;
+  box-shadow: 0 8px 0 #B0BEC5 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+/* Restart buttons */
+.btn-restart {
+  background: var(--btn-orange);
+  color: #FFF;
+  box-shadow: 0 8px 0 var(--btn-orange-shadow);
+  padding: 16px 50px;
+}
+
+.btn-restart:active {
+  transform: translateY(6px);
+  box-shadow: 0 2px 0 var(--btn-orange-shadow);
+}
+
+.btn-bounce {
+  animation: btnBounce 2s infinite ease-in-out;
+}
+
+@keyframes btnBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ==========================================
+   RESULTS / END SCREENS
+   ========================================== */
+.success-trophy, .failure-mascot {
+  margin-bottom: 20px;
+}
+
+.trophy-svg, .star-svg {
+  width: 140px;
+  animation: bounceRotate 4s infinite ease-in-out;
+}
+
+@keyframes bounceRotate {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(-5deg); }
+  50% { transform: translateY(0) rotate(0deg); }
+  75% { transform: translateY(-10px) rotate(5deg); }
+}
+
+.result-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.success-text {
+  color: #2E7D32;
+  text-shadow: 2px 2px 0 #C8E6C9;
+}
+
+.failure-text {
+  color: #E64A19;
+  text-shadow: 2px 2px 0 #FFCCBC;
+}
+
+.result-message {
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  max-width: 85%;
+}
+
+.school-welcome-msg {
+  background: #E8F5E9;
+  border: 3px dashed #81C784;
+  padding: 12px 20px;
+  border-radius: 16px;
+  color: #2E7D32;
+  display: inline-block;
+}
+
+.failure-encouragement {
+  color: var(--text-light);
+  font-size: 1.05rem;
+}
+
+/* ==========================================
+   CONFETTI SCREEN OVERLAY
+   ========================================== */
+.confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+  display: none;
+}
+
+/* ==========================================
+   FOOTER STYLES
+   ========================================== */
+.app-footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #006064;
+  opacity: 0.7;
+}
+
+/* ==========================================
+   ANIMATIONS & RESPONSIVE DESIGN
+   ========================================== */
+@keyframes slideDown {
+  0% { transform: translateY(-50px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Small Screens Mobile Tweaks */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .test-card {
+    padding: 30px 15px;
+    min-height: 440px;
+  }
+
+  .welcome-title {
+    font-size: 1.8rem;
+  }
+
+  .welcome-text {
+    font-size: 1rem;
+  }
+
+  .equation-box {
+    font-size: 2.6rem;
+  }
+
+  .math-answer-input {
+    width: 80px;
+    height: 70px;
+    font-size: 2.6rem;
+  }
+
+  .keypad-btn {
+    font-size: 1.5rem;
+    padding: 10px;
+  }
+
+  .result-title {
+    font-size: 2rem;
+  }
+}

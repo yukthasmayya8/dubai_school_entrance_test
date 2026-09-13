@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dubai Indian School - Math Adventure Test</title>
+  
+  <!-- Playful, child-friendly font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- SEO & Accessibility -->
+  <meta name="description" content="A playful, interactive 3-question arithmetic admission test for 6-year-olds entering Dubai Indian School.">
+  <meta name="keywords" content="Dubai Indian School, Admission Test, Kid Math, Arithmetic Test">
+</head>
+<body>
+  
+  <!-- Floating background elements for child-friendly aesthetics -->
+  <div class="bubble-bg">
+    <div class="bubble bubble-1"></div>
+    <div class="bubble bubble-2"></div>
+    <div class="bubble bubble-3"></div>
+    <div class="bubble bubble-4"></div>
+  </div>
+
+  <div class="app-container">
+    <header class="app-header">
+      <div class="logo-container">
+        <!-- SVG School Emblem -->
+        <svg viewBox="0 0 100 100" class="school-logo" aria-hidden="true">
+          <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="6"/>
+          <path d="M50 15 L80 35 L80 45 L50 25 L20 45 L20 35 Z" fill="currentColor"/>
+          <rect x="25" y="45" width="50" height="35" fill="currentColor" rx="3"/>
+          <rect x="42" y="58" width="16" height="22" fill="#fff" rx="2"/>
+          <polygon points="50,22 55,30 45,30" fill="#fff"/>
+        </svg>
+        <div class="logo-text">
+          <h1>Dubai Indian School</h1>
+          <p class="tagline">Math Adventure Test 🚀</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="test-card" id="main-card">
+      
+      <!-- SCREEN 1: INTRO -->
+      <section id="screen-intro" class="screen-view active">
+        <div class="illustration-container">
+          <!-- Animated School Bus SVG -->
+          <svg viewBox="0 0 200 120" class="animated-bus" aria-label="Yellow school bus illustration">
+            <rect x="20" y="30" width="140" height="60" fill="#FFD000" rx="15" />
+            <rect x="135" y="30" width="25" height="60" fill="#FFC107" rx="5" />
+            <!-- Windows -->
+            <rect x="35" y="40" width="22" height="22" fill="#E0F7FA" rx="4" />
+            <rect x="67" y="40" width="22" height="22" fill="#E0F7FA" rx="4" />
+            <rect x="99" y="40" width="22" height="22" fill="#E0F7FA" rx="4" />
+            <path d="M132 40 H150 V62 H132 Z" fill="#E0F7FA" />
+            <!-- Wheels -->
+            <circle cx="50" cy="95" r="18" fill="#37474F" />
+            <circle cx="50" cy="95" r="8" fill="#CFD8DC" />
+            <circle cx="130" cy="95" r="18" fill="#37474F" />
+            <circle cx="130" cy="95" r="8" fill="#CFD8DC" />
+            <!-- Lights & Details -->
+            <rect x="150" y="72" width="12" height="12" fill="#FF5722" rx="2" />
+            <circle cx="15" cy="50" r="5" fill="#FFEB3B" />
+            <line x1="20" y1="75" x2="160" y2="75" stroke="#37474F" stroke-width="4" />
+          </svg>
+        </div>
+        
+        <h2 class="welcome-title">Welcome, Little Explorer! 🌟</h2>
+        <p class="welcome-text">
+          Are you ready to show us your math superpowers? Answer 3 fun questions to join our school adventure!
+        </p>
+        
+        <button id="btn-start" class="btn btn-pulse">Start Adventure! 🎉</button>
+      </section>
+
+      <!-- SCREEN 2: QUESTION -->
+      <section id="screen-question" class="screen-view">
+        <!-- Progress bar with Bus -->
+        <div class="progress-section">
+          <div class="progress-text-container">
+            <span id="question-number" class="badge">Question 1 of 3</span>
+            <span id="score-helper" class="score-helper">Let's go! 🎒</span>
+          </div>
+          <div class="progress-bar-container">
+            <div id="progress-fill" class="progress-fill"></div>
+            <!-- The moving bus indicator -->
+            <div id="progress-bus" class="progress-bus">🚌</div>
+          </div>
+        </div>
+
+        <!-- Question Title/Instruction -->
+        <div class="question-instruction" id="question-instruction">Solve the equation:</div>
+
+        <!-- Equation Card -->
+        <div class="equation-container">
+          <div class="equation-box">
+            <span id="num-a" class="eq-num">8</span>
+            <span id="operator" class="eq-op">+</span>
+            <span id="num-b" class="eq-num">7</span>
+            <span class="eq-equals">=</span>
+            <input type="number" id="math-answer-input" class="math-answer-input" placeholder="?" min="0" max="99" autofocus pattern="[0-9]*" inputmode="numeric" aria-label="Enter answer">
+          </div>
+        </div>
+
+        <!-- Custom Bubbly Keypad -->
+        <div class="keypad-container" id="keypad-grid" role="group" aria-label="Number keypad">
+          <button class="keypad-btn btn-color-1" data-val="1">1</button>
+          <button class="keypad-btn btn-color-2" data-val="2">2</button>
+          <button class="keypad-btn btn-color-3" data-val="3">3</button>
+          <button class="keypad-btn btn-color-4" data-val="4">4</button>
+          <button class="keypad-btn btn-color-1" data-val="5">5</button>
+          <button class="keypad-btn btn-color-2" data-val="6">6</button>
+          <button class="keypad-btn btn-color-3" data-val="7">7</button>
+          <button class="keypad-btn btn-color-4" data-val="8">8</button>
+          <button class="keypad-btn btn-color-1" data-val="9">9</button>
+          <button class="keypad-btn btn-color-action" data-val="clear">C</button>
+          <button class="keypad-btn btn-color-2" data-val="0">0</button>
+          <button class="keypad-btn btn-color-action" data-val="backspace">⌫</button>
+        </div>
+
+        <!-- Action Button -->
+        <button id="btn-submit" class="btn btn-disabled" disabled>Submit Answer ➔</button>
+      </section>
+
+      <!-- SCREEN 3: SUCCESS (Celebration) -->
+      <section id="screen-success" class="screen-view">
+        <!-- Celebratory Trophy SVG -->
+        <div class="success-trophy">
+          <svg viewBox="0 0 100 100" class="trophy-svg" aria-label="Golden Trophy Mascot">
+            <path d="M30 20 H70 V45 C70 56 61 65 50 65 C39 65 30 56 30 45 Z" fill="#FFD54F" stroke="#FFB300" stroke-width="3" />
+            <path d="M50 65 V80 H40 V85 H60 V80 H50 Z" fill="#FFB300" />
+            <!-- Handles -->
+            <path d="M30 25 H20 V40 H30 Z" fill="none" stroke="#FFB300" stroke-width="4" stroke-linejoin="round" />
+            <path d="M70 25 H80 V40 H70 Z" fill="none" stroke="#FFB300" stroke-width="4" stroke-linejoin="round" />
+            <!-- Happy face -->
+            <circle cx="43" cy="38" r="3" fill="#37474F" />
+            <circle cx="57" cy="38" r="3" fill="#37474F" />
+            <path d="M45 48 Q50 54 55 48" fill="none" stroke="#37474F" stroke-width="3" stroke-linecap="round" />
+            <!-- Sparkles -->
+            <path d="M15 15 L20 20 M85 15 L80 20 M10 50 L18 50 M90 50 L82 50" stroke="#FFD54F" stroke-width="3" stroke-linecap="round" />
+          </svg>
+        </div>
+
+        <h2 class="result-title success-text">Congratulations! 🎉</h2>
+        <p class="result-message">
+          You have passed the admission test!
+        </p>
+        <p class="welcome-text school-welcome-msg">
+          Welcome to the family of <strong>Dubai Indian School</strong>! 🏫✨
+        </p>
+
+        <button id="btn-restart-success" class="btn btn-restart">Play Again ↻</button>
+      </section>
+
+      <!-- SCREEN 4: FAILURE (Try Again) -->
+      <section id="screen-failure" class="screen-view">
+        <!-- Encouraging Mascot -->
+        <div class="failure-mascot">
+          <svg viewBox="0 0 100 100" class="star-svg" aria-label="Smiling Star Mascot">
+            <polygon points="50,5 64,36 98,36 70,57 81,91 50,70 19,91 30,57 2,36 36,36" fill="#FFF59D" stroke="#FBC02D" stroke-width="3" />
+            <!-- Cute face -->
+            <circle cx="42" cy="45" r="3" fill="#37474F" />
+            <circle cx="58" cy="45" r="3" fill="#37474F" />
+            <!-- Blushing cheeks -->
+            <circle cx="36" cy="52" r="4" fill="#FF8A80" opacity="0.6" />
+            <circle cx="64" cy="52" r="4" fill="#FF8A80" opacity="0.6" />
+            <!-- Winking mouth -->
+            <path d="M46 52 Q50 56 54 52" fill="none" stroke="#37474F" stroke-width="2.5" stroke-linecap="round" />
+          </svg>
+        </div>
+
+        <h2 class="result-title failure-text">You did so well! 🌟</h2>
+        <p class="result-message">
+          Try again!
+        </p>
+        <p class="welcome-text failure-encouragement">
+          Keep trying! Practice makes us stronger. Let's do it together! 💪
+        </p>
+
+        <button id="btn-restart-failure" class="btn btn-restart btn-bounce">Try Again ↻</button>
+      </section>
+
+    </main>
+
+    <!-- Canvas for Confetti Rain -->
+    <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
+
+    <footer class="app-footer">
+      <p>&copy; 2026 Dubai Indian School. Primary Admission Portal.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
